@@ -5,8 +5,8 @@ import { generateDatesFromYearBeginning } from '../utils/generate-dates-from-yea
 
 import { HabitDay, DAY_SIZE } from "../components/HabitDay";
 import { Header } from "../components/Header";
-import { useNavigation } from "@react-navigation/native";
-import { useState, useEffect } from "react";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { useState, useCallback } from "react";
 import { Loading } from "../components/Loading";
 import dayjs from "dayjs";
 
@@ -43,9 +43,9 @@ export function Home(){
     }
   }
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     fetchData();
-  }, [])
+  }, []));
 
   if(loading){
     return(
